@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="description" content="" />
+  <meta charset="utf-8">
+  <title>Kima! You are missed!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="">
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/chota@latest"/>
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/color-calendar@3.0.0/dist/bundle.js"></script>
+  <script src="./simplyCountdown.umd.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/color-calendar@3.0.0/dist/css/theme-basic.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"rel="stylesheet"/>
+</head>
+
+<body style="background-color:#FFB6C1;">
+  
+<div class="container">
+  <section class="is-center" style="margin-top: 1em;">
+  <img src="k.gif" style="object-fit: none; height: 24em;border-radius: 50%;"/>
+  </section>
+  <section class="is-center" style="text-align: center;">
+  <h2>🌺<b>I am missing You!</b>🌺</h2>
+  </section>
+  <section class="is-center">
+  <p id="time-until-header"></p>
+  </section>
+  <section class="is-center" style="text-align: center;">
+  <div id="countdown"></div>
+  </section>
+  <br/>
+  <section class="is-center">
+  <p><b>Today's reason to smile</b>: </p>
+  </section>
+  <section class="is-center" style="text-align: center;">
+  <p id="reason-to-smile"></p>
+  </section>
+  <section class="is-center">
+  <div id="color-calendar"></div>
+  </section>
+  <section class="is-center">
+  <p><small><i>Legend: (red dot) days away remaning; (green dot) days passed</i></small></p>
+  </section>
+</div>
+
+<script>
+const leaveTime = new Date("2025-10-12T00:00:00+02:00");
+const returnTime = new Date("2025-11-09T23:59:59Z+02:00");
+
+const currentTime = new Date(Date.now());
+<!-- const currentTime = new Date("2025-10-30T08:00:00"); -->
+const reasonKey = "" + (currentTime.getMonth()+1) + "-" + currentTime.getDate();
+
+if (currentTime < leaveTime) {
+  document.getElementById("time-until-header").innerHTML = "<b>Time before You leave</b>:";
+  simplyCountdown("#countdown", {
+      year: leaveTime.getFullYear(),
+      month: leaveTime.getMonth() + 1,
+      day: leaveTime.getDate(),
+      inline: true,
+  });
+
+};
+if (currentTime >= leaveTime) {
+  if (currentTime >= returnTime) {
+    document.getElementById("time-until-header").innerHTML = "<b>You are back!</b>";
+  } else {
+    document.getElementById("time-until-header").innerHTML = "<b>Time until You are back:</b>";
+    simplyCountdown("#countdown", {
+        year: returnTime.getFullYear(),
+        month: returnTime.getMonth() + 1,
+        day: returnTime.getDate(),
+        inline: true,
+    });
+  }
+};
+
+new Calendar({
+  container: "#color-calendar",
+  calendarSize: "large",
+  disableMonthYearPickers: true,
+  disableMonthArrowClick: true,
+  disableDayClick: true,
+  initialSelectedDate: currentTime,
+  primaryColor: "#a688aa",
+  headerBackgroundColor: "#a688aa",
+  eventBulletMode: "multiple",
+  eventsData: [
+    {
+      start: leaveTime,
+      end: (currentTime >= leaveTime) ? currentTime : leaveTime,
+      name: 'Days passed',
+      color: '#2E6F40'
+    },
+    {
+      start: (currentTime >= leaveTime) ? currentTime: leaveTime,
+      end: returnTime,
+      name: 'Days to go',
+      color: '#D2042D'
+    }
+  ]
+});
+
+const reasons = {
+  "10-11": "<i>When we are together, You turn random walks into adventure movies!</i>",
+  "10-12": "<i>You are the only person who can make me smile, mid-bug fix!</i>",
+  "10-13": "<i>One text from You and suddenly my world is a lot less annoying!</i>",
+  "10-14": "",
+  "10-15": "",
+  "10-16": "",
+  "10-17": "",
+  "10-18": "",
+  "10-19": "",
+  "10-20": "",
+  "10-21": "",
+  "10-22": "",
+  "10-23": "",
+  "10-24": "",
+  "10-25": "",
+  "10-26": "",
+  "10-27": "",
+  "10-28": "",
+  "10-29": "",
+  "10-30": "",
+  "10-31": "",
+  "11-01": "",
+  "11-02": "",
+  "11-03": "",
+  "11-04": "",
+  "11-05": "",
+  "11-06": "",
+  "11-07": "",
+  "11-08": "",
+  "11-09": "",
+  "11-10": "",
+  "11-11": "",
+  "11-12": "",
+};
+document.getElementById("reason-to-smile").innerHTML = reasons[reasonKey];
+</script>
+
+</body>
+</html>
