@@ -48,7 +48,7 @@
 
 <script>
 const leaveTime = new Date("2025-10-12T00:00:00+02:00");
-const returnTime = new Date("2025-11-09T23:59:59+02:00");
+const returnTime = new Date("2025-10-29T23:59:59+02:00");
 
 const currentTime = new Date(Date.now());
 <!-- const currentTime = new Date("2025-10-30T08:00:00"); -->
@@ -66,7 +66,7 @@ if (currentTime < leaveTime) {
 };
 if (currentTime >= leaveTime) {
   if (currentTime >= returnTime) {
-    document.getElementById("time-until-header").innerHTML = "<b>You are back!</b>";
+    document.getElementById("time-until-header").innerHTML = "<b>You are back! :) I would love to grab You to chat! :)</b>";
   } else {
     document.getElementById("time-until-header").innerHTML = "<b>Time until You are back:</b>";
     simplyCountdown("#countdown", {
