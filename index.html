@@ -125,21 +125,11 @@ const reasons = {
   "10-28": "<i>I burned down my pan, trying to make a perfect Carbonarra for You!</i>",
   "10-29": "<i>Haloween might pass us by, but I will become Count Vampire for You! :)</i>",
   "10-30": "<i>Spooky season is just around the corner, yet the most spooky thing is how much I miss You! :)</i>",
-  "10-31": "",
-  "11-01": "",
-  "11-02": "",
-  "11-03": "",
-  "11-04": "",
-  "11-05": "",
-  "11-06": "",
-  "11-07": "",
-  "11-08": "",
-  "11-09": "",
-  "11-10": "",
-  "11-11": "",
-  "11-12": "",
 };
-document.getElementById("reason-to-smile").innerHTML = reasons[reasonKey];
+for (const [key, value] of Object.entries(reasons)) {
+  document.getElementById("reason-to-smile").innerHTML += "<br/>" + key + " => " + value;
+}
+
 </script>
 
 </body>
